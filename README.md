@@ -37,7 +37,30 @@ const [ novaTarefa, setNovaTarefa ] = useState('')
 
 
 ### 5. Renderização do JSX 
-<img src="./public/hook-useCallback.png">
+
+
+- O JSX renderiza uma estrutura de entrada para gerenciar a lista de tarefas:
+- Um ( input ) para o usuário digitar a nova tarefa. O valor do input é controlado pelo estado novaTarefa, e a função onChange atualiza esse estado conforme o usuário digita.
+- Um ( button ) que chama a função adicionarTarefa ao ser clicado, adicionando a nova tarefa à lista.
+- Um ( ul ) que mapeia o array tarefas e renderiza cada tarefa em um ( li ). Cada item recebe uma chave (key) com o índice para identificar os elementos de forma única.
+
+
+ 
+### 6. Explicação do useCallback no Contexto
+
+- Sem o useCallback, a função adicionarTarefa seria recriada em cada renderização do componente, o que pode ser ineficiente, especialmente se a função for passada como prop para componentes filhos.
+- Ao usar useCallback, a função é recriada apenas quando a dependência novaTarefa mudar, o que melhora o desempenho do componente em situações mais complexas.
+- Esse fluxo completo permite ao usuário adicionar tarefas à lista de forma eficiente, com a função de adição sendo otimizada pelo uso do useCallback.
+
+
+
+
+
+
+
+
+
+
 
 
 
