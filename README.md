@@ -1,50 +1,67 @@
-# React + TypeScript + Vite
+## Lista de tarefas usando hook useCallback
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### O que é e para que serve o useCallback
+O useCallback é um react rook que serve para armazenar funções em cache, otimizando o desempenho de componentes e evitando que esse seja reenderizado desnecessariamente em uma aplicação.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Passo a passo construção do código 
+### 1. Importação de Dependências
 
-## Expanding the ESLint configuration
+import React, { useState, useCallback } from 'react';
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- Importando React, o hook useState para gerenciar o estado do componente e o useCallback para memorizar funções.
 
-- Configure the top-level `parserOptions` property like this:
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+### 2. Definição do Componente ListaDeTarefas
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+function ListaDeTarefas() {}
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+- Criamos o componente funcional ListaDeTarefas, que será responsável por exibir a lista de tarefas e permitir a adição de novas.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+
+### 3. Declaração dos Estados
+
+const [ tarefas, setTarefas ] = useState([])<br>
+const [ novaTarefa, setNovaTarefa ] = useState('')
+
+- tarefas : é um estado que armazena uma lista de tarefas, inicialmente definida como um array vazio.
+- novaTarefa : é um estado que armazena o valor atual do input, onde o usuário digita a nova tarefa. Começa como uma string vazia.
+
+
+### 4. Função adicionarTarefa com useCallback
+
+- useCallback memoriza a função adicionarTarefa para que ela só seja recriada quando a variável novaTarefa mudar.
+- A função adicionarTarefa faz o seguinte:  Verifica se novaTarefa não é uma string vazia após remover espaços extras com 'trim()'.
+- Usa setTarefas para atualizar a lista de tarefas, adicionando a nova tarefa ao array existente. O uso de (prevState) => [...prevState, novaTarefa] garante que o estado seja atualizado de forma segura com base no valor anterior.
+- setNovaTarefa("") -> limpa o campo novaTarefa,  definindo-o como uma string vazia para que o input seja resetado.
+
+
+### 5. Renderização do JSX 
+<img src="./public/hook-useCallback.png">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
