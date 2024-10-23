@@ -37,7 +37,7 @@ const [ novaTarefa, setNovaTarefa ] = useState('')
 
 
 ### 5. Renderização do JSX 
-
+<img src="./public/hook-useCallback.png">
 
 - O JSX renderiza uma estrutura de entrada para gerenciar a lista de tarefas:
 - Um ( input ) para o usuário digitar a nova tarefa. O valor do input é controlado pelo estado novaTarefa, e a função onChange atualiza esse estado conforme o usuário digita.
